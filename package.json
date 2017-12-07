@@ -1,0 +1,37 @@
+{
+  "name": "AwesomeProject",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-native-scripts": "1.8.1",
+    "jest-expo": "23.0.0",
+    "react-test-renderer": "16.0.0"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "expo": "^23.0.4",
+    "mobx-react-form": "^1.32.2",
+    "native-base": "^2.3.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.2.0",
+    "react-native": "0.50.3",
+    "react-native-clean-form": "^0.4.2",
+    "react-native-form": "^2.1.2",
+    "react-navigation": "^1.0.0-beta.21",
+    "react-redux": "^5.0.6",
+    "react-redux-form": "^1.16.2",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
+    "validatorjs": "^3.13.6"
+  }
+}
