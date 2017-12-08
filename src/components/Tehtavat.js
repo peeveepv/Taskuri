@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image, Button, Text, Alert } from 'react-native';
+import Laatikko from '../containers/Laatikko';
+import Tehtava from "../containers/Tehtava";
+import {haeKaikkiKayttajat} from "../tiedonhakusivut/Kayttajahaku";
 
 export default class Tehtavat extends React.Component {
     static navigationOptions = {
@@ -13,35 +16,20 @@ export default class Tehtavat extends React.Component {
         }
     };
 
+
     constructor(props) {
         super(props);
         this.state = {
-            nimi: 'Nimi',
-            salasana: 'salasana',
-            pisteet: 0,
+            henkilot: [],
         };
     }
 
     componentDidMount() {
-        return fetch('https://taskuri.herokuapp.com/kayttaja/15')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                this.setState({
-                    nimi: responseJson.nimi,
-                    salasana: responseJson.salasana,
-                    pisteet: responseJson.pisteet,
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-
-
-
-    _onPressButton() {
-        Alert.alert('Tässä lisätietoa taskista')
-    }
+        haeKaikkiKayttajat().then((json) => {
+            console.log(json);
+            this.setState({henkilot: json});
+        });
+    };
 
     render() {
         return (
@@ -50,69 +38,20 @@ export default class Tehtavat extends React.Component {
                 flexDirection: 'column',
             }}>
 
-                <View style={styles.omat}>
-                    <Text style={styles.otsikko}>Hei, {this.state.nimi}!</Text>
-                    <Text style={styles.otsikko}>Tervetuloa Taskuriin!</Text>
-                    <Text style={styles.otsikko}>Pistesaldosi on {this.state.pisteet}</Text>
-                </View>
+                <Laatikko laatikonNimi="testilaatikko">
 
-                <View style={styles.omat}>
-                    <Text style={styles.otsikko}>Omat taskit</Text>
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                    />
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                    />
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                    />
-                </View>
+                    {this.state.henkilot.map((henkilo) =>
+                        <Tehtava key={henkilo.id} data={henkilo}/>)}
 
-                <View style={styles.yhteiset}>
-                    <Text style={styles.otsikko}>Perheen yhteiset taskit</Text>
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                        color="#841584"
-                    />
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                        color="#841584"
-                    />
-                    <Button
-                        onPress={this._onPressButton}
-                        title="Taskin nimi"
-                        color="#841584"
-                    />
-                </View>
+                </Laatikko>
+
+                <Laatikko/>
+
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    omat: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'yellow',
-        margin: 20,
-    },
-    yhteiset: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'red',
-        margin: 20,
-    },
-    otsikko: {
-        flex: 1,
-        justifyContent: 'center',
-        fontWeight: 'bold',
-        fontSize: 20,
-        backgroundColor: 'steelblue',
-    }
-})
+Tehtavat.defaultProps = {
+    nappulanNimi: 'Otsikko'
+};
