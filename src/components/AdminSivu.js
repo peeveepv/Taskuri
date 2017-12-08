@@ -17,12 +17,17 @@ export default class AdminSivu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { text: 'Kirjoita tähän taskin otsikko' };
+        this.state = {
+            nimi: 'Nimi',
+            salasana: 'Salasana',
+            rooli: "Rooli",
+            pisteet: 0,
+            ryhmaID: 1,
+            email: null,
+        };
     }
 
-
-
-    componentDidMount() {
+    lisaa() {
         fetch("https://taskuri.herokuapp.com/kayttaja/lisaa", {
             method: "POST",
             headers: {
@@ -30,16 +35,17 @@ export default class AdminSivu extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                nimi: "olio",
-                salasana: "testi",
-                rooli: "Admin",
-                ryhmaId: "2",
-                email: "seppo",
+                "nimi": this.state.nimi,
+                "salasana": this.state.salasana,
+                "rooli": this.state.rooli,
+                "pisteet": this.state.pisteet,
+                "ryhmaID": this.state.ryhmaID,
+                "email": this.state.email
             })
 
         })
             .then((response) => {
-                alert("It Work !")
+                alert("Tiedot tallennettu")
             }).catch((err) => {
             alert(err)
         })
@@ -56,9 +62,18 @@ render() {
                 <View style={styles.omat}>
 
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                           onChangeText={(text) => this.setState({text})}
-                           value={this.state.text}/>
-                <Button title='Lisää task' onPress={() => this.componentDidMount()} />
+                           onChangeText={(nimi) => this.setState({nimi})}
+                           value={this.state.nimi}/>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           onChangeText={(salasana) => this.setState({salasana})}
+                           value={this.state.salasana}/>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           onChangeText={(rooli) => this.setState({rooli})}
+                           value={this.state.rooli}/>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           onChangeText={(email) => this.setState({email})}
+                           value={this.state.email}/>
+                <Button title='Lisää käyttäjä' onPress={() => this.lisaa()} />
                 </View>
             </View>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {TabNavigator,} from 'react-navigation';
-import Profiili from './src/components/Profiili';
+import Tehtavat from './src/components/Tehtavat';
 import Palkinnot from './src/components/Palkinnot';
 import AdminSivu from "./src/components/AdminSivu";
 
@@ -8,7 +8,7 @@ import AdminSivu from "./src/components/AdminSivu";
 
 
 const MainScreenNavigator = TabNavigator({
-    Profiili : { screen: Profiili },
+    Tehtävät : { screen: Tehtavat },
     Palkinnot: {screen: Palkinnot },
     Admin : {screen: AdminSivu},
 },
