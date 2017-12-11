@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, ListView, Text, Alert, View, StyleSheet, Image, Button, TextInput} from 'react-native';
+import {lisaaKayttaja} from "../tiedonhakusivut/Kayttajahaku";
 
 
 
@@ -18,38 +19,18 @@ export default class AdminSivu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nimi: 'Nimi',
-            salasana: 'Salasana',
-            rooli: "Rooli",
-            pisteet: 0,
+            nimi: '',
+            salasana: '',
+            rooli: '',
+            pisteet: 1,
             ryhmaID: 1,
-            email: null,
+            email: '',
         };
     }
 
     lisaa() {
-        fetch("https://taskuri.herokuapp.com/kayttaja/lisaa", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                "nimi": this.state.nimi,
-                "salasana": this.state.salasana,
-                "rooli": this.state.rooli,
-                "pisteet": this.state.pisteet,
-                "ryhmaID": this.state.ryhmaID,
-                "email": this.state.email
-            })
-
-        })
-            .then((response) => {
-                alert("Tiedot tallennettu")
-            }).catch((err) => {
-            alert(err)
-        })
-    }
+        lisaaKayttaja(this.state.nimi, this.state.salasana, this.state.rooli, this.state.pisteet, this.state.ryhmaID, this.state.email)
+    };
 
 
 
@@ -62,15 +43,27 @@ render() {
                 <View style={styles.omat}>
 
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä nimi"
                            onChangeText={(nimi) => this.setState({nimi})}
                            value={this.state.nimi}/>
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä salasana"
                            onChangeText={(salasana) => this.setState({salasana})}
                            value={this.state.salasana}/>
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä rooli"
                            onChangeText={(rooli) => this.setState({rooli})}
                            value={this.state.rooli}/>
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä pisteet"
+                           onChangeText={(pisteet) => this.setState({pisteet})}
+                           value={`${this.state.pisteet}`} keyboardType='numeric'/>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä ryhmäID"
+                           onChangeText={(ryhmaID) => this.setState({ryhmaID})}
+                           value={`${this.state.pisteet}`} keyboardType='numeric'/>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                           placeholder="Syötä sähköpostiosoite"
                            onChangeText={(email) => this.setState({email})}
                            value={this.state.email}/>
                 <Button title='Lisää käyttäjä' onPress={() => this.lisaa()} />
