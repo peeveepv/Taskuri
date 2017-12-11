@@ -24,6 +24,7 @@ export default class Tehtavat extends React.Component {
         };
     }
 
+    //haetaan dataa metodia hyödyntäen
     componentDidMount() {
         haeKaikkiKayttajat().then((json) => {
             console.log(json);
@@ -38,6 +39,8 @@ export default class Tehtavat extends React.Component {
                 flexDirection: 'column',
             }}>
 
+                <Laatikko/>
+
                 <Laatikko laatikonNimi="testilaatikko">
 
                     {this.state.henkilot.map((henkilo) =>
@@ -45,7 +48,14 @@ export default class Tehtavat extends React.Component {
 
                 </Laatikko>
 
-                <Laatikko/>
+                <Laatikko laatikonNimi="testilaatikko">
+
+                    {this.state.henkilot.map((henkilo) =>
+                        <Tehtava key={henkilo.id} data={henkilo}/>)}
+
+                </Laatikko>
+
+
 
             </View>
         );
