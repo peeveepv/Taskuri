@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView} from 'react-native';
+import { StyleSheet, Text, ScrollView, View} from 'react-native';
+import Tehtava from "./Tehtava";
 
 
 //tällä sivulla luodaan hyvin yksinkertainen laatikko, jota uudelleenkäytetään taskien ja palkintojen listauksessa
@@ -10,10 +11,12 @@ export default class Laatikko extends React.Component {
     render() {
         return (
 
+            <View style={styles[this.props.asettelu]}>
+                <Text>{this.props.asettelu}</Text>
                 <ScrollView style={styles[this.props.asettelu]}>
-                    <Text style={styles[this.props.asettelu]}>{this.props.laatikonNimi}</Text>
                     {this.props.children}
                 </ScrollView>
+            </View>
         );
     }
 }
@@ -34,5 +37,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'yellow',
         margin: 20,
     },
+
 
 });
