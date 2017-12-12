@@ -1,7 +1,7 @@
 const tehtavaUrl = 'https://taskuri.herokuapp.com/tehtava';
 
 export function haeKayttajanTehtavat(lammas) {
-    return fetch(tehtavaUrl + '/lampaantehtavat' + lammas, {
+    return fetch(tehtavaUrl + '/lampaantehtavat/' + lammas, {
     })
         .then(function(response) {
             if (response.ok) {
