@@ -5,17 +5,6 @@ import LaatikonSisalto from '../containers/LaatikonSisalto'
 import Laatikko from '../containers/Laatikko'
 
 export default class Palkinnot extends Component {
-  static navigationOptions = {
-    header: null,
-    showIcon: true,
-    tabBarIcon: ({tintColor}) => {
-      return <Image
-        source={require('../kuvat/kirstu.png')}
-        style={{width: 26, height: 26, tintColor: tintColor}}
-      />
-    }
-  }
-
   constructor(props) {
     super(props);
     this.state = {
