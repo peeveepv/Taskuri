@@ -8,7 +8,7 @@ export function haeAvoimetPalkinnot(kayttajaId) {
         return response.json();
       }
       throw new Error('Ongelmia tiedonhaussa');
-  })
+    })
 }
 
 export function haeLukitutPalkinnot(kayttajaId) {
@@ -73,9 +73,11 @@ export function muokkaaPalkintoa(palkintoId) {
       'Accept': 'application/json',
       'Content-Type': 'application/json' },
     body: JSON.stringify({
+      'id': this.state.id,
       'nimi': this.state.nimi,
       'kuvaus': this.state.kuvaus,
-      'arvo': this.state.arvo
+      'arvo': this.state.arvo,
+      'ryhmaId': this.state.ryhmaId
     })
   })
     .then((function(response) {
@@ -85,19 +87,14 @@ export function muokkaaPalkintoa(palkintoId) {
     }))
 }
 
-export function lisaaPalkinto() {
+export function lisaaPalkinto(nimi, kuvaus, arvo, ryhmaId) {
   return fetch(palkintoUrl+'/lisaa', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      'nimi': this.state.nimi,
-      'kuvaus': this.state.kuvaus,
-      'arvo': this.state.arvo,
-      'ryhmaId': this.state.ryhmaId
-    })
+    body: JSON.stringify(nimi, kuvaus, arvo, ryhmaId)
   })
     .then((function(response) {
       if (response.ok) {
@@ -116,5 +113,7 @@ export function lunastaPalkinto(kayttajaId, palkintoId) {
       } throw new Error('Muutokset epäonnistuivat')
     }))
 }
+
+
 
 
