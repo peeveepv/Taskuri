@@ -6,26 +6,25 @@ import {haeKayttajanTehtavat, haePerheenValisemattomatTehtavat} from "../tiedonh
 
 
 export default class Tehtavat extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      omattehtavat: [],
-      ryhmantehtavat: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            omattehtavat: [],
+            ryhmantehtavat: [],
+        };
+    }
+
+    //haetaan käyttäjän omat tehtävät (metodilla haeKayttajanTehtavat) ja ryhmän tehtävät (metodilla haePerheenTehtavat), jotka mapataan render-metodissa
+    componentDidMount() {
+        haeKayttajanTehtavat(5).then((json) => {
+            console.log(json);
+            this.setState({omattehtavat: json});
+        });
+        haePerheenValisemattomatTehtavat(12).then((json) => {
+            console.log(json);
+            this.setState({ryhmantehtavat: json});
+        });
     };
-  }
-
-  //haetaan käyttäjän omat tehtävät (metodilla haeKayttajanTehtavat) ja ryhmän tehtävät (metodilla haePerheenTehtavat), jotka mapataan render-metodissa
-  componentDidMount() {
-    haeKayttajanTehtavat(5).then((json) => {
-      console.log(json);
-      this.setState({omattehtavat: json});
-    });
-    haePerheenValisemattomatTehtavat(12).then((json) => {
-      console.log(json);
-      this.setState({ryhmantehtavat: json});
-    });
-  };
-
 
   // tehtävien mappaukset ovat Laatikko-komponentin lapsia (children)
   render() {

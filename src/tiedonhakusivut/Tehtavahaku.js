@@ -13,8 +13,8 @@ export function haeKayttajanTehtavat(lammas) {
         })
 }
 
-export function haePerheenTehtavat(ryhmaId) {
-    return fetch(tehtavaUrl + '/' + ryhmaId, {
+export function haePerheenValisemattomatTehtavat(ryhmaId) {
+    return fetch(tehtavaUrl + '/valitsematon/' + ryhmaId, {
     })
         .then(function(response) {
             if (response.ok) {
