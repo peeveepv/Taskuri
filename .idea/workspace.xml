@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a925dd9-3ce5-4a13-9ee9-f0477fa797d7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Paanavigaattori.js" afterPath="$PROJECT_DIR$/src/components/Paanavigaattori.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/AdminSivu.js" afterPath="$PROJECT_DIR$/src/components/AdminSivu.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -104,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LaatikonSisalto.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LaatikonSisalto.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/LaatikonSisalto.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="189">
@@ -140,7 +137,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Paanavigaattori.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Paanavigaattori.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Paanavigaattori.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1113">
@@ -155,8 +152,8 @@
       <file leaf-file-name="AdminSivu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AdminSivu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            <state relative-caret-position="42">
+              <caret line="8" column="56" lean-forward="false" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -204,8 +201,8 @@
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/src/components/Palkinnot.js" />
         <option value="$PROJECT_DIR$/src/components/Tehtavat.js" />
-        <option value="$PROJECT_DIR$/src/components/AdminSivu.js" />
         <option value="$PROJECT_DIR$/src/components/Paanavigaattori.js" />
+        <option value="$PROJECT_DIR$/src/components/AdminSivu.js" />
       </list>
     </option>
   </component>
@@ -438,7 +435,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98293000" />
+    <option name="totallyTimeSpent" value="98373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -861,24 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Paanavigaattori.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1113">
-          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AdminSivu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Laatikko.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -905,6 +884,24 @@
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <marker date="1513078525144" expanded="true" signature="728:876" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AdminSivu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="8" column="56" lean-forward="false" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Paanavigaattori.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1113">
+          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
