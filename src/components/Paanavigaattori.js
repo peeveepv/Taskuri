@@ -4,8 +4,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Tehtavat from '../components/Tehtavat';
 import Palkinnot from '../components/Palkinnot';
-import AdminSivu from "../components/AdminSivu";
-
+import Oletusnakyma from '../AdminSivut/Oletusnakyma';
 
 
 //Tämä sivu pitää sisällään navigointiominaisuuden. Navigointipalkki näkyy puhelimen alareunassa ja
@@ -25,21 +24,6 @@ const styles = StyleSheet.create({
 });
 
 const Paanavigaattori = TabNavigator({
-Palkinnot: {
-    screen: Palkinnot,
-    navigationOptions: {
-      title: 'Palkinnot',
-      headerStyle: styles.mainHeader,
-      headerTitleStyle: styles.headerTitle,
-      swipeEnabled: false,
-      tabBarIcon: ({tintColor}) => (
-        <Icon
-          source={require('../kuvat/kirstu.png')}
-          style={{width: 26, height: 26, color: tintColor}}
-        />
-      )
-    }
-  },
  Tehtävät: {
     screen: Tehtavat,
     navigationOptions: {
@@ -55,10 +39,25 @@ Palkinnot: {
       )
     }
   },
+    Palkinnot: {
+      screen: Palkinnot,
+      navigationOptions: {
+        title: 'Palkinnot',
+        headerStyle: styles.mainHeader,
+        headerTitleStyle: styles.headerTitle,
+        swipeEnabled: false,
+        tabBarIcon: ({tintColor}) => (
+          <Icon
+            source={require('../kuvat/kirstu.png')}
+            style={{width: 26, height: 26, color: tintColor}}
+          />
+        )
+      }
+    },
   Admin: {
       screen: Oletusnakyma,
       navigationOptions: {
-        title: 'Tehtävät',
+        title: 'Asetukset',
         headerStyle: styles.mainHeader,
         headerTitleStyle: styles.headerTitle,
         swipeEnabled: false,
