@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 const tehtavaUrl = 'https://taskuri.herokuapp.com/tehtava';
 
 export function haeKayttajanTehtavat(lammas) {
@@ -12,7 +14,7 @@ export function haeKayttajanTehtavat(lammas) {
 }
 
 export function haePerheenTehtavat(ryhmaId) {
-    return fetch(tehtavaUrl + '/tehtava/' + ryhmaId, {
+    return fetch(tehtavaUrl + '/' + ryhmaId, {
     })
         .then(function(response) {
             if (response.ok) {
