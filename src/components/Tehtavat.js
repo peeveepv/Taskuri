@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image, Button, Text, Alert } from 'react-native';
 import Laatikko from '../containers/Laatikko';
-import Tehtava from "../containers/Tehtava";
-import {haeKaikkiKayttajat} from "../tiedonhakusivut/Kayttajahaku";
+import LaatikonSisalto from "../containers/LaatikonSisalto";
+import {haeKayttajanTehtavat, haePerheenTehtavat} from "../tiedonhakusivut/Tehtavahaku";
+
 
 export default class Tehtavat extends React.Component {
     static navigationOptions = {
@@ -16,21 +17,23 @@ export default class Tehtavat extends React.Component {
         }
     };
 
-
     constructor(props) {
         super(props);
         this.state = {
-            henkilot: [],
+            tehtavat: [],
         };
     }
 
     //haetaan dataa metodia hyödyntäen
     componentDidMount() {
-        haeKaikkiKayttajat().then((json) => {
+        haeKayttajanTehtavat(5).then((json) => {
             console.log(json);
-            this.setState({henkilot: json});
+            this.setState({tehtavat: json});
         });
     };
+
+
+    // tehtävien mappaus ovat Laatikko-komponentin lapsia (childern)
 
     render() {
         return (
@@ -39,22 +42,21 @@ export default class Tehtavat extends React.Component {
                 flexDirection: 'column',
             }}>
 
-                <Laatikko/>
+                <Laatikko laatikonNimi='tähän tulee yläpalkki'/>
 
                 <Laatikko laatikonNimi="testilaatikko">
 
-                    {this.state.henkilot.map((henkilo) =>
-                        <Tehtava key={henkilo.id} data={henkilo}/>)}
+                    {this.state.tehtavat.map((tehtava) =>
+                        <LaatikonSisalto key={tehtava.id} lisatieto={tehtava.kuvaus} otsikko={tehtava.nimi}/>)}
 
                 </Laatikko>
 
                 <Laatikko laatikonNimi="testilaatikko">
 
-                    {this.state.henkilot.map((henkilo) =>
-                        <Tehtava key={henkilo.id} data={henkilo}/>)}
+                    {this.state.tehtavat.map((tehtava) =>
+                        <LaatikonSisalto key={tehtava.id} lisatieto={tehtava.kuvaus} otsikko={tehtava.nimi}/>)}
 
                 </Laatikko>
-
 
 
             </View>
