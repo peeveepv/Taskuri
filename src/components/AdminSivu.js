@@ -16,7 +16,7 @@ export default class AdminSivu extends React.Component {
                     <Scene
                         key="oletus"
                         component={Oletusnakyma}
-                        title="Oletus"
+                        title="Asetukset"
                         initial
                     />
                     <Scene
@@ -28,7 +28,7 @@ export default class AdminSivu extends React.Component {
                     <Scene
                         key="tehtavat"
                         component={TehtavaHallinnointi}
-                        title="Tehtavat"
+                        title="Tehtävät"
                     />
 
                     <Scene key="palkinnot"
