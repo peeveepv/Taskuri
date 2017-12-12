@@ -20,21 +20,25 @@ export default class Tehtavat extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tehtavat: [],
+            omattehtavat: [],
+            ryhmantehtavat: [],
         };
     }
 
-    //haetaan dataa metodia hyödyntäen
+    //haetaan käyttäjän omat tehtävät (metodilla haeKayttajanTehtavat) ja ryhmän tehtävät (metodilla haePerheenTehtavat), jotka mapataan render-metodissa
     componentDidMount() {
         haeKayttajanTehtavat(5).then((json) => {
             console.log(json);
-            this.setState({tehtavat: json});
+            this.setState({omattehtavat: json});
+        });
+        haePerheenTehtavat(12).then((json) => {
+            console.log(json);
+            this.setState({ryhmantehtavat: json});
         });
     };
 
 
-    // tehtävien mappaus ovat Laatikko-komponentin lapsia (childern)
-
+    // tehtävien mappaukset ovat Laatikko-komponentin lapsia (children)
     render() {
         return (
             <View style={{
@@ -44,17 +48,17 @@ export default class Tehtavat extends React.Component {
 
                 <Laatikko laatikonNimi='tähän tulee yläpalkki'/>
 
-                <Laatikko laatikonNimi="testilaatikko">
+                <Laatikko laatikonNimi="Omat tehtävät">
 
-                    {this.state.tehtavat.map((tehtava) =>
-                        <LaatikonSisalto key={tehtava.id} lisatieto={tehtava.kuvaus} otsikko={tehtava.nimi}/>)}
+                    {this.state.omattehtavat.map((omatehtava) =>
+                        <LaatikonSisalto key={omatehtava.id} lisatieto={omatehtava.kuvaus} otsikko={omatehtava.nimi + ' (' + omatehtava.pisteet + ' pistettä)'}/>)}
 
                 </Laatikko>
 
-                <Laatikko laatikonNimi="testilaatikko">
+                <Laatikko laatikonNimi="Koko ryhmän tehtävät">
 
-                    {this.state.tehtavat.map((tehtava) =>
-                        <LaatikonSisalto key={tehtava.id} lisatieto={tehtava.kuvaus} otsikko={tehtava.nimi}/>)}
+                    {this.state.ryhmantehtavat.map((ryhmantehtava) =>
+                        <LaatikonSisalto key={ryhmantehtava.id} lisatieto={ryhmantehtava.kuvaus} otsikko={ryhmantehtava.nimi + ' (' + ryhmantehtava.pisteet + ' pistettä)'}/>)}
 
                 </Laatikko>
 
