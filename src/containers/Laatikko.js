@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, ScrollView, View} from 'react-native';
-import Tehtava from "./Tehtava";
 
 
 //tällä sivulla luodaan hyvin yksinkertainen laatikko, jota uudelleenkäytetään taskien ja palkintojen listauksessa

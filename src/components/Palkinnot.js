@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { ActivityIndicator, ListView, Text, View, StyleSheet, Image, TextInput, ScrollView } from 'react-native'
 import { haeAvoimetPalkinnot, haeLukitutPalkinnot } from '../tiedonhakusivut/Palkintohaku'
+import LaatikonSisalto from '../containers/LaatikonSisalto'
+import Laatikko from '../containers/Laatikko'
 
 export default class Palkinnot extends Component {
   static navigationOptions = {
@@ -14,39 +16,48 @@ export default class Palkinnot extends Component {
     }
   }
 
-  state = {
-    avoimetPalkinnot: [],
-    lukitutPalkinnot: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      avoimetPalkinnot: [],
+      lukitutPalkinnot: []
+    };
   }
 
-  componentDidMount () {
-    let konteksti = this
-    haeAvoimetPalkinnot(1)
-      .then(function (json) {
-        konteksti.setState({avoimetPalkinnot: [json]})
+  componentDidMount = () => {
+    haeAvoimetPalkinnot(5)
+      .then((json) => {
+        console.log(json);
+        this.setState({avoimetPalkinnot: json})
       })
-    haeLukitutPalkinnot(1)
-      .then(function (json) {
-        konteksti.setState({lukitutPalkinnot: [json]})
+      .catch(function (err) {
+        alert('Virhe tiedonhaussa');
+      });
+    haeLukitutPalkinnot(5)
+      .then((json) => {
+        console.log(json);
+        this.setState({lukitutPalkinnot: json});
       })
+      .catch(function (err) {
+        alert('Virhe tiedonhaussa');
+      });
   }
 
   render () {
-    let avoimetPalkinnot = this.state.avoimetPalkinnot.map(function (palkinto) {
-      return (
-        <Nimilistaus palkinto={palkinto} key={palkinto.id}/>
-      )
-    })
-      let lukitutPalkinnot = this.state.lukitutPalkinnot.map(function (palkinto) {
-        return (
-          <Nimilistaus palkinto={palkinto} key={palkinto.id}/>
-        )
-      })
-      return (
-        <View style={{flex: 1, paddingTop: 20}}>
-          <Nimilistaus sisalto={this.props.avoimetPalkinnot}/>
-          <Nimilistaus sisalto={this.props.lukitutPalkinnot}/>
-        </View>
-      )
+    return (
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+      }}>
+        <Laatikko>
+          {this.state.avoimetPalkinnot.map((palkinto) =>
+            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
+        </Laatikko>
+        <Laatikko>
+          {this.state.lukitutPalkinnot.map((palkinto) =>
+            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
+        </Laatikko>
+      </View>
+    )
   }
 }
