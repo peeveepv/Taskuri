@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Image, Button, Text, Alert } from 'react-native';
 import Laatikko from '../containers/Laatikko';
 import LaatikonSisalto from "../containers/LaatikonSisalto";
-import {haeKayttajanTehtavat, haePerheenTehtavat} from "../tiedonhakusivut/Tehtavahaku";
+import {haeKayttajanTehtavat, haePerheenValisemattomatTehtavat} from "../tiedonhakusivut/Tehtavahaku";
 
 
 export default class Tehtavat extends React.Component {
@@ -31,7 +31,7 @@ export default class Tehtavat extends React.Component {
             console.log(json);
             this.setState({omattehtavat: json});
         });
-        haePerheenTehtavat(12).then((json) => {
+        haePerheenValisemattomatTehtavat(12).then((json) => {
             console.log(json);
             this.setState({ryhmantehtavat: json});
         });
