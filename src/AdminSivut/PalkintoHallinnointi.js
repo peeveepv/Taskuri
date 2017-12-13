@@ -16,8 +16,6 @@ export default class PalkintoHallinnointi extends React.Component {
             ryhmaID: '',
             ryhmankaikkipalkinnot: [],
             ryhmanlunastamatpalkinnot: [],
-            title       : props.title,
-            expanded    : true
         };
     }
 
