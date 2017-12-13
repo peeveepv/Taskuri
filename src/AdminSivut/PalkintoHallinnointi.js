@@ -37,14 +37,6 @@ export default class PalkintoHallinnointi extends React.Component {
     };
 
 
-    poista() {
-        poistaKayttaja();
-    };
-
-    toggle(){
-
-    }
-
     render() {
         return (
             <ScrollView style={{
