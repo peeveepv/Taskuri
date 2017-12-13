@@ -25,6 +25,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.2.0",
     "react-native": "0.50.3",
+    "react-native-checkbox": "^2.0.0",
     "react-native-clean-form": "^0.4.2",
     "react-native-form": "^2.1.2",
     "react-native-router-flux": "^4.0.0-beta.24",

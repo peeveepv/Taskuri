@@ -66,16 +66,17 @@ export function poistaPalkinto(palkintoId) {
         }))
 }
 
-export function muokkaaPalkintoa(palkintoId) {
+export function muokkaaPalkintoa(palkintoId, nimi, kuvaus, arvo, ryhmaId) {
     return fetch(palkintoUrl+'/muokkaa/'+palkintoId, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json' },
         body: JSON.stringify({
-            'nimi': this.state.nimi,
-            'kuvaus': this.state.kuvaus,
-            'arvo': this.state.arvo
+            'nimi': nimi,
+            'kuvaus': kuvaus,
+            'arvo': arvo,
+            'ryhmaId': ryhmaId
         })
     })
         .then((function(response) {
