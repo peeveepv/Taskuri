@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigaattori from './src/components/Navigaattori'
+import Paanavigaattori from './src/components/Paanavigaattori'
 
 //Tämä sivu pitää sisällään navigointiominaisuuden. Navigointipalkki näkyy puhelimen alareunassa.
 
@@ -7,7 +7,7 @@ import Navigaattori from './src/components/Navigaattori'
 export default class App extends React.Component {
     render() {
         return (
-            <Navigaattori/>
+            <Paanavigaattori/>
         )
     }
 }

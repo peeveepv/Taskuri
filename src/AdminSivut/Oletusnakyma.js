@@ -5,6 +5,7 @@ import {
     View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Header from '../components/Header';
 import KayttajaHallinnointi from '../AdminSivut/KayttajaHallinnointi';
 import PalkintoHallinnointi from '../AdminSivut/PalkintoHallinnointi';
 import TehtavaHallinnointi from '../AdminSivut/TehtavaHallinnointi';

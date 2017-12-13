@@ -3,8 +3,20 @@ import { ActivityIndicator, ListView, Text, View, StyleSheet, Image, TextInput, 
 import { haeAvoimetPalkinnot, haeLukitutPalkinnot } from '../tiedonhakusivut/Palkintohaku'
 import LaatikonSisalto from '../containers/LaatikonSisalto'
 import Laatikko from '../containers/Laatikko'
+import Header from './Header'
 
 export default class Palkinnot extends Component {
+  static navigationOptions = {
+    header: null,
+    showIcon: true,
+    tabBarIcon: () => {
+      return <Image
+        source={require('../kuvat/kirstu.png')}
+        style={{width: 26, height: 26, tintColor: '#fff'}}
+      />
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +50,7 @@ export default class Palkinnot extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
+        <Header sivunOtsikko={'Palkinnot'} />
         <Laatikko>
           {this.state.avoimetPalkinnot.map((palkinto) =>
             <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
