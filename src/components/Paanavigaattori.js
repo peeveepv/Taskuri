@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Tehtavat from '../components/Tehtavat';
 import Palkinnot from '../components/Palkinnot';
 import AdminSivu from './AdminSivu'
+import Oletusnakyma from '../AdminSivut/Oletusnakyma'
 
 
 //Tämä sivu pitää sisällään navigointiominaisuuden. Navigointipalkki näkyy puhelimen alareunassa ja

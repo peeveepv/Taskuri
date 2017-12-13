@@ -24,7 +24,7 @@ export function haePerheenValisemattomatTehtavat(ryhmaId) {
         })
 }
 
-export function lisaaTehtava() {
+export function lisaaTehtava(luoja, lammas, ryhmaId, nimi, kuvaus, pisteet, deadline, tila) {
     return fetch(tehtavaUrl + '/lisaa', {
         method: 'POST',
         headers: {
@@ -32,14 +32,14 @@ export function lisaaTehtava() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            'luoja' : this.state.luoja,
-            'lammas': this.state.lammas,
-            'ryhmaId': this.state.ryhmaId,
-            'nimi': this.state.nimi,
-            'kuvaus': this.state.kuvaus,
-            'pisteet': this.state.pisteet,
-            'deadline': this.state.deadline,
-            'tila': this.state.tila
+            'luoja' : luoja,
+            'lammas': lammas,
+            'ryhmaId': ryhmaId,
+            'nimi': nimi,
+            'kuvaus': kuvaus,
+            'pisteet': pisteet,
+            'deadline': deadline,
+            'tila': tila
         })
     })
         .then((function(response) {
@@ -49,21 +49,21 @@ export function lisaaTehtava() {
         }));
 }
 
-export function muokkaaTehtavaa(tehtavaId) {
+export function muokkaaTehtavaa(tehtavaId, luoja, lammas, ryhmaId, nimi, kuvaus, pisteet, deadline, tila) {
     return fetch(tehtavaUrl + '/muokkaa/' + tehtavaId, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json' },
         body: JSON.stringify({
-            'luoja' : this.state.luoja,
-            'lammas': this.state.lammas,
-            'ryhmaId': this.state.ryhmaId,
-            'nimi': this.state.nimi,
-            'kuvaus': this.state.kuvaus,
-            'pisteet': this.state.pisteet,
-            'deadline': this.state.deadline,
-            'tila': this.state.tila
+            'luoja' : luoja,
+            'lammas': lammas,
+            'ryhmaId': ryhmaId,
+            'nimi': nimi,
+            'kuvaus': kuvaus,
+            'pisteet': pisteet,
+            'deadline': deadline,
+            'tila': tila
         })
     })
         .then((function(response) {
@@ -77,11 +77,22 @@ export function poistaTehtava(tehtavaId) {
     return fetch(tehtavaUrl + '/poista/' + tehtavaId, {
         method: 'DELETE',
     })
-        .then((function(response) {
+        .then(function(response) {
             if (response.ok) {
                 alert('Muutokset onnistuivat');
             } throw new Error('Muutokset epäonnistuivat')
-        }))
+        })
+}
+
+export function suoritaTehtava(kayttajaId, tehtavaId) {
+  return fetch(tehtavaUrl + '/' + kayttajaId + '/suorita/' + tehtavaId, {
+    method: 'PUT',
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Tehtävä suoritettu!');
+      } throw new Error('Tehtävän merkitseminen suoritetuksi epäonnistui')
+    })
 }
 
 export function haeKayttajanTekematTehtavat(lammas) {
