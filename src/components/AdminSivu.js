@@ -13,7 +13,7 @@ export default class AdminSivu extends React.Component {
     tabBarIcon: () => {
       return <Image
         source={require('../kuvat/hammasratas.png')}
-        style={{width: 26, height: 26, tintColor: '#fff'}}
+        style={{width: 26, height: 26, tintColor: '#0ff5b4'}}
       />
     }
   }

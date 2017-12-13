@@ -12,7 +12,7 @@ export default class Tehtavat extends React.Component {
     tabBarIcon: () => {
       return <Image
         source={require('../kuvat/kayttaja.png')}
-        style={{width: 26, height: 26, tintColor: '#fff'}}
+        style={{width: 26, height: 26, tintColor: '#0ff5b4'}}
       />
     }
   }
@@ -46,8 +46,8 @@ export default class Tehtavat extends React.Component {
       }}>
 
         <Header sivunOtsikko={'Tehtävät'}>
-          <Image source={require('../kuvat/kayttaja.png')}
-                 style={{width: 26, height: 26}}/>
+          <Image source={require('../kuvat/taskuri-tehtavat.png')}
+                 style={{width: 60, height: 60}}/>
         </Header>
 
         <Laatikko>

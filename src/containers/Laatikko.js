@@ -23,19 +23,14 @@ export default class Laatikko extends React.Component {
 
 // tässä asetetaan laatikon nimen ja tyylin suhteen oletusarvot, jotka voi asettaa uudelleenkäytettäessä propsien avulla halutessaan joksikin muuksi
 Laatikko.defaultProps = {
-    laatikonNimi: 'oletusnimi',
-    asettelu: 'oletustyyli'
+  laatikonNimi: 'oletusnimi',
+  asettelu: 'oletustyyli'
 };
-
-
-
-
 const styles = StyleSheet.create({
-    oletustyyli: {
-        flex: 1,
-        backgroundColor: 'yellow',
-        margin: 20,
-    },
-
-
+  oletustyyli: {
+    flex: 1,
+    backgroundColor: 'lightgrey',
+    margin: 20,
+    borderRadius: 30,
+  },
 });

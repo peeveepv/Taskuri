@@ -14,8 +14,16 @@ const Paanavigaattori = TabNavigator({
     tabBarPosition: 'bottom',
     swipeEnabled: false,
     tabBarOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: '#fff',
+      inactiveTintColor: '#0ff5b4',
       showIcon: true,
+      style: {
+        backgroundColor: '#414141',
+      },
+      indicatorStyle: {
+        borderBottomColor: '#ffffff',
+        borderBottomWidth: 2,
+      }
     },
     lazy: true,
   });

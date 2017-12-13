@@ -12,7 +12,7 @@ export default class Palkinnot extends Component {
     tabBarIcon: () => {
       return <Image
         source={require('../kuvat/kirstu.png')}
-        style={{width: 26, height: 26, tintColor: '#fff'}}
+        style={{width: 26, height: 26, tintColor: '#0ff5b4'}}
       />
     }
   }
@@ -50,7 +50,10 @@ export default class Palkinnot extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
-        <Header sivunOtsikko={'Palkinnot'} />
+        <Header sivunOtsikko={'Palkinnot'}>
+          <Image source={require('../kuvat/taskuri-palkinnot.png')}
+                 style={{width: 60, height: 60}}/>
+        </Header>
         <Laatikko>
           {this.state.avoimetPalkinnot.map((palkinto) =>
             <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}

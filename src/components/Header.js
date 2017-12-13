@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Image } from 'react-native'
 
 export default class Header extends Component {
   render () {
-    const {viewStyle, textStyle, pistetyyli} = styles;
+    const {viewStyle, textStyle, piste, pisteSisallot} = styles;
     return (
       <View style={viewStyle}>
         <View>
-          <Text style={pistetyyli}>Käyttäjän pisteet</Text>
-        </View>
-        <View>
-          <Text style={textStyle}>{this.props.sivunOtsikko}</Text>
-        </View>
-        <View>
           {this.props.children}
+        </View>
+        <View>
+          <Text style={textStyle}>Jaska</Text>
+        </View>
+        <View style={pisteSisallot}>
+          <Image source={require('../kuvat/icons8-diamond-50.png')}
+                 style={{width: 30, height: 30}}/>
+          <Text style={piste}>10</Text>
         </View>
       </View>
     )
@@ -26,7 +28,7 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'row',
-    height: 60,
+    height: 80,
     paddingTop: 25,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
@@ -36,13 +38,18 @@ const styles = {
   },
   textStyle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: '#fff'
   },
-  pistetyyli: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  piste: {
+    fontSize: 26,
     color: '#fff'
+  },
+  pisteSisallot: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
   }
 
 
