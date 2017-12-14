@@ -35,6 +35,7 @@ export default class PalkintoHallinnointi extends React.Component {
     lisaa() {
         lisaaPalkinto(this.state.nimi, this.state.kuvaus, this.state.arvo, this.state.ryhmaID);
         Alert.alert('Palkinto lisätty');
+        Actions.oletus();
     };
 
 
@@ -54,7 +55,7 @@ export default class PalkintoHallinnointi extends React.Component {
                 <View style={styles.omat}>
 
                     <Laatikko laatikonNimi="Kaikki ryhmän palkinnot">
-                        <Text>Nimeä klikkaamalla muokkaukseen</Text>
+                        <Text>Palkinnon nimeä klikkaamalla muokkaukseen</Text>
                         <Text> </Text>
                         <ScrollView style={styles.container}>
                             {this.state.ryhmankaikkipalkinnot.map((item, index) => {
@@ -83,18 +84,22 @@ export default class PalkintoHallinnointi extends React.Component {
 
                     <Laatikko laatikonNimi="Lisää uusi palkinto">
 
+                        <Text>Syötä palkinnon nimi</Text>
                         <TextInput style={styles.laatikot}
                                    placeholder="Syötä nimi"
                                    onChangeText={(nimi) => this.setState({nimi})}
                                    value={this.state.nimi}/>
+                        <Text>Syötä palkinnon kuvaus</Text>
                         <TextInput style={styles.laatikot}
                                    placeholder="Syötä kuvaus"
                                    onChangeText={(kuvaus) => this.setState({kuvaus})}
                                    value={this.state.kuvaus}/>
+                        <Text>Syötä palkinnon arvo pisteinä</Text>
                         <TextInput style={styles.laatikot}
                                    placeholder="Syötä pisteet"
                                    onChangeText={(arvo) => this.setState({arvo})}
                                    value={`${this.state.arvo}`} keyboardType='numeric'/>
+                        <Text>Syötä ID ryhmälle, johon palkinto lisätään</Text>
                         <TextInput style={styles.laatikot}
                                    placeholder="Syötä ryhmäID"
                                    onChangeText={(ryhmaID) => this.setState({ryhmaID})}
