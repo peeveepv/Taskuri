@@ -6,9 +6,8 @@ export default class Header extends Component {
     const {viewStyle, textStyle, piste, pisteSisallot} = styles;
     return (
       <View style={viewStyle}>
-        <View>
-          {this.props.children}
-        </View>
+        <Image source={require('../kuvat/taskuri-t.png')}
+               style={{width: 60, height: 60}}/>
         <View>
           <Text style={textStyle}>Jaska</Text>
         </View>
