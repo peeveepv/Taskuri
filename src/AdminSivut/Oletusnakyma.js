@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Header from '../components/Header';
-import KayttajaHallinnointi from '../AdminSivut/KayttajaHallinnointi';
-import PalkintoHallinnointi from '../AdminSivut/PalkintoHallinnointi';
-import TehtavaHallinnointi from '../AdminSivut/TehtavaHallinnointi';
 
 
 const Oletusnakyma = () => {
     return (
         <View style={styles.container}>
+                <Image source={require('../kuvat/taskuri-logo.png')} style={styles.logo}/>
+
             <Text
                 style={styles.welcome}
                 onPress={() => Actions.kayttajat()}>
@@ -30,6 +24,7 @@ const Oletusnakyma = () => {
                 Palkintojen hallinnointisivu
             </Text>
         </View>
+
     );
 }
 
@@ -38,14 +33,27 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#493742',
+        backgroundColor: 'lightgrey',
     },
     welcome: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        color: '#ffffff',
+        color: '#000000',
     },
+    logoContainer: {
+        alignItems: 'center',
+        flexGrow: 1,
+        justifyContent: 'center',
+
+    },
+    logo: {
+        height: 200,
+        width: 200,
+    },
+
 });
+
+
 
 export default Oletusnakyma;
