@@ -27,11 +27,11 @@ export default class Tehtavat extends React.Component {
 
   //haetaan käyttäjän omat tehtävät (metodilla haeKayttajanTehtavat) ja ryhmän tehtävät (metodilla haePerheenTehtavat), jotka mapataan render-metodissa
   componentDidMount () {
-    haeKayttajanTehtavat(5).then((json) => {
+    haeKayttajanTehtavat(18).then((json) => {
       console.log(json)
       this.setState({omattehtavat: json})
     })
-    haePerheenValisemattomatTehtavat(12).then((json) => {
+    haePerheenValisemattomatTehtavat(7).then((json) => {
       console.log(json)
       this.setState({ryhmantehtavat: json})
     })
@@ -45,10 +45,7 @@ export default class Tehtavat extends React.Component {
         flexDirection: 'column',
       }}>
 
-        <Header sivunOtsikko={'Tehtävät'}>
-          <Image source={require('../kuvat/taskuri-tehtavat.png')}
-                 style={{width: 60, height: 60}}/>
-        </Header>
+        <Header sivunOtsikko={'Tehtävät'}/>
 
         <Laatikko>
 

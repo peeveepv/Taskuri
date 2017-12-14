@@ -26,7 +26,7 @@ export default class Palkinnot extends Component {
   }
 
   componentDidMount = () => {
-    haeAvoimetPalkinnot(5)
+    haeAvoimetPalkinnot(18)
       .then((json) => {
         console.log(json);
         this.setState({avoimetPalkinnot: json})
@@ -34,7 +34,7 @@ export default class Palkinnot extends Component {
       .catch(function (err) {
         alert('Virhe tiedonhaussa');
       });
-    haeLukitutPalkinnot(5)
+    haeLukitutPalkinnot(18)
       .then((json) => {
         console.log(json);
         this.setState({lukitutPalkinnot: json});
@@ -50,10 +50,7 @@ export default class Palkinnot extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
-        <Header sivunOtsikko={'Palkinnot'}>
-          <Image source={require('../kuvat/taskuri-palkinnot.png')}
-                 style={{width: 60, height: 60}}/>
-        </Header>
+        <Header sivunOtsikko={'Palkinnot'}/>
         <Laatikko>
           {this.state.avoimetPalkinnot.map((palkinto) =>
             <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
