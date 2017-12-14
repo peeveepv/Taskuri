@@ -3,6 +3,7 @@ import {StyleSheet, Text, TextInput, Button, View, ScrollView, Alert} from 'reac
 import {haePerheenLunastetut, lisaaPalkinto, haeKaikkiPerheenPalkinnot} from "../tiedonhakusivut/Palkintohaku";
 import LaatikonSisalto from '../containers/LaatikonSisalto';
 import Laatikko from '../containers/Laatikko';
+import { Actions } from 'react-native-router-flux';
 
 
 export default class PalkintoHallinnointi extends React.Component {
@@ -21,11 +22,11 @@ export default class PalkintoHallinnointi extends React.Component {
 
     //haetaan käyttäjät(metodilla haeKaikkiRyhmanKayttajat), jotka mapataan render-metodissa
     componentDidMount() {
-        haePerheenLunastetut(12).then((json) => {
+        haePerheenLunastetut(7).then((json) => {
             console.log(json);
             this.setState({ryhmanlunastamatpalkinnot: json});
         });
-        haeKaikkiPerheenPalkinnot(12).then((json) => {
+        haeKaikkiPerheenPalkinnot(7).then((json) => {
             console.log(json);
             this.setState({ryhmankaikkipalkinnot: json});
         });
@@ -35,6 +36,12 @@ export default class PalkintoHallinnointi extends React.Component {
         lisaaPalkinto(this.state.nimi, this.state.kuvaus, this.state.arvo, this.state.ryhmaID);
         Alert.alert('Palkinto lisätty');
     };
+
+
+    siirryPalkintoon(indeksi) {
+        console.log('You clicked: ' + indeksi);
+        Actions.palkintolisays()
+    }
 
 
     render() {
@@ -47,11 +54,24 @@ export default class PalkintoHallinnointi extends React.Component {
                 <View style={styles.omat}>
 
                     <Laatikko laatikonNimi="Kaikki ryhmän palkinnot">
-
-                        {this.state.ryhmankaikkipalkinnot.map((ryhmanpalkinto) =>
-                            <LaatikonSisalto key={ryhmanpalkinto.id} otsikko={ryhmanpalkinto.nimi} lisatieto={ryhmanpalkinto.arvo} />)}
-
+                        <Text>Nimeä klikkaamalla muokkaukseen</Text>
+                        <Text> </Text>
+                        <ScrollView style={styles.container}>
+                            {this.state.ryhmankaikkipalkinnot.map((item, index) => {
+                                return (
+                                    <View key={item.id}>
+                                        <Button
+                                            color="#0ff5b4"
+                                            title={item.nimi}
+                                            onPress={(title)=>{this.siirryPalkintoon(item.id)}}
+                                        />
+                                    </View>
+                                )
+                            })}
+                        </ScrollView>
                     </Laatikko>
+
+
 
                     <Laatikko laatikonNimi="Kaikki ryhmän lunastetut palkinnot">
 
@@ -63,23 +83,23 @@ export default class PalkintoHallinnointi extends React.Component {
 
                     <Laatikko laatikonNimi="Lisää uusi palkinto">
 
-                        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        <TextInput style={styles.laatikot}
                                    placeholder="Syötä nimi"
                                    onChangeText={(nimi) => this.setState({nimi})}
                                    value={this.state.nimi}/>
-                        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        <TextInput style={styles.laatikot}
                                    placeholder="Syötä kuvaus"
                                    onChangeText={(kuvaus) => this.setState({kuvaus})}
                                    value={this.state.kuvaus}/>
-                        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        <TextInput style={styles.laatikot}
                                    placeholder="Syötä pisteet"
                                    onChangeText={(arvo) => this.setState({arvo})}
                                    value={`${this.state.arvo}`} keyboardType='numeric'/>
-                        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        <TextInput style={styles.laatikot}
                                    placeholder="Syötä ryhmäID"
                                    onChangeText={(ryhmaID) => this.setState({ryhmaID})}
                                    value={`${this.state.ryhmaID}`} keyboardType='numeric'/>
-                        <Button title='Lisää palkinto' onPress={() => this.lisaa()} />
+                        <Button color="#0ff5b4" title='Lisää palkinto' onPress={() => this.lisaa()} />
                     </Laatikko>
 
                 </View>
@@ -90,10 +110,16 @@ export default class PalkintoHallinnointi extends React.Component {
 
 
 const styles = StyleSheet.create({
+    laatikot: {
+        height: 40,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        marginBottom: 20,
+        color: 'white',
+        paddingHorizontal: 10,
+    },
     omat: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'yellow',
         margin: 20,
     },
     yhteiset: {
@@ -108,5 +134,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         backgroundColor: 'steelblue',
-    }
+    },
+    buttoncontainer: {
+        margin: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
 });
