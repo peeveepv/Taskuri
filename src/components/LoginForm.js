@@ -1,10 +1,15 @@
 import React, { AsyncStorage, Component } from 'react';
 import { Text } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from './common';
-import Login from 'react-native-simple-login';
+import { Button } from './common/Button';
+import { Card } from './common/Card';
+import { CardSection } from './common/CardSection';
+import { Input } from './common/Input';
+import { Spinner } from './common/Spinner';
+//import Login from 'react-native-simple-login';
 
 // Kertoo mistä kirjautumistiedot löytyy, aka meidän herokusivu
 const urli = 'https://taskuri.herokuapp.com/kayttaja/login';
+const ryhmaurli = 'https://taskuri.herokuapp.com/ryhma/kirjaudu';
 
 //Loginformi, aka kaiken sälän containeri
 class LoginForm extends Component {
@@ -15,26 +20,36 @@ class LoginForm extends Component {
     this.setState({ error: '', loading: true });
     login();
   }
+
   login = () => {
-    fetch(urli, {
+    fetch(ryhmaurli, {
       method: 'POST',
       headers: {
         'Accept': 'application/json'
       },
-      body: JSON.stringify(!!!!TEE TÄLLE JOTAIN)
-    }).then((response)) => {
+      body: JSON.stringify({nimi: this.state.ryhmaID, salasana: this.state.salasana})
+    }).then((response) => {
+      //jos 200 kaikki hyvin
+      if (response.status === 200) {
       return response.json();
-    }).then((response)) => {
+    } else {
+      // jos kaikki ei hyvin, esim salasana väärin
+      throw new Exception();
+    }
+    }).then((response) => {
       if (response.ryhmaID && response.salasana) {
         AsyncStorage.multiSet([
           ['token', response.token],
           ['userID', response.nimi],
-
-        ]);
+        ])
       } else {
         if (callback) { callback(); }
       }
-    )}.done();
+    })
+    .catch(()=>{
+        this.setState({ error: 'Kirjautuminen epäonnistui', loading: false });
+    })
+    .done();
   }
 
   getUser = (userID)=> {
@@ -48,33 +63,6 @@ class LoginForm extends Component {
   }
 
 
-  componentWillMount () {
-    var token;
-    AsyncStorage.multiGet(['token', 'userID']).then((data)) => {
-      if (data[0][1]) {
-        token = data[0][1] || null;
-        return this.getUser((data[0][1]));
-      }
-    }).then((user)) => {
-      if(user){
-        return user.json();
-      }else{
-        return null;
-      }
-    }).then((user)) => {
-
-      // redirect aloitussivulle
-      this.setState({
-        user: user,
-        token: token
-      })
-    }
-  }
-
-
-  onLoginFail() {
-    this.setState({ error: 'Kirjautuminen epäonnistui', loading: false });
-  }
 
   onLoginSuccess() {
     this.setState({
@@ -170,7 +158,7 @@ class LoginForm extends Component {
         headers: {
           'Accept': 'application/json'
         },
-        body: JSON.stringify(!!!!TEE TÄLLE JOTAIN)
+        body: JSON.stringify({})
       }).then((response) => {
         return response.json();
       }).then((response) => {
@@ -180,11 +168,11 @@ class LoginForm extends Component {
             ['userID', response.userID],
             ['ryhmaID', this.state.ryhmaID]
           ]);
-          this.props.callback(response.token);
+          this.props.callback(response.token, response.userID, this.state.ryhmaID);
         } else {
           if (callback) { callback(); }
         }
-      )}.done();
+      }).done();
     }
   }
 
