@@ -9,22 +9,34 @@ export default class LaatikonSisalto extends Component{
     painanappia() {
         Alert.alert('Lisätietoa: ' + '\n' + this.props.lisatieto);
     }
+    
+      teeToiminto() {
+    this.props.toiminto(this.props.kayttajaId, this.props.muuId);
+  }
 
 
-    render(){
-        console.log(this.props.data)
-        return(
+ render(){
+    console.log(this.props.data)
+    return(
+      <View style={styles.alternativeLayoutButtonContainer}>
+        <Button
+          onPress={this.painanappia.bind(this)}
+          title={this.props.otsikko}
+        />
+        <Button color="#0ff5b4"
+                onPress={this.teeToiminto.bind(this)}
+                title={this.props.toiminnonNimi}
+        />
+      </View>
 
-            // Bindissä oleva 'this' viittaa tässä yhteydessä Tehtava-luokan scopeen (eli ns. tila-avaruuteen)
-            // Ilman bindia ao. {this.painanappia} ei tiedä, mistä scopesta sitä kutsutaan --> eli se pitää bindin avulla liittää johonkin scopeen (
-            // (tässä tapauksessa siis tähän kyseiseen Tehtava-luokan scopeen
-
-
-            <Button
-                onPress={this.painanappia.bind(this)}
-                title={this.props.otsikko}
-            />
-        )
-    }
+    )
+  }
 
 }
+
+const styles = StyleSheet.create({
+  alternativeLayoutButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+})
