@@ -49,9 +49,12 @@ export default class Tehtavat extends React.Component {
 
         <Laatikko>
 
-          {this.state.omattehtavat.map((omatehtava) =>
+                {this.state.omattehtavat.map((omatehtava) =>
             <LaatikonSisalto key={omatehtava.id} lisatieto={omatehtava.kuvaus}
-                             otsikko={omatehtava.nimi + ' (' + omatehtava.pisteet + ' pistettä)'}/>)}
+                             toiminnonNimi={'Tehty!'}
+                             otsikko={omatehtava.nimi + ' (' + omatehtava.pisteet + ' pistettä)'}
+                             toiminto={suoritaTehtava} kayttajaId={68} muuId={omatehtava.id}
+            />)}
 
         </Laatikko>
 
@@ -59,7 +62,10 @@ export default class Tehtavat extends React.Component {
 
           {this.state.ryhmantehtavat.map((ryhmantehtava) =>
             <LaatikonSisalto key={ryhmantehtava.id} lisatieto={ryhmantehtava.kuvaus}
-                             otsikko={ryhmantehtava.nimi + ' (' + ryhmantehtava.pisteet + ' pistettä)'}/>)}
+                             toiminnonNimi={'Tehty!'}
+                             otsikko={ryhmantehtava.nimi + ' (' + ryhmantehtava.pisteet + ' pistettä)'}
+                             toiminto={suoritaTehtava} kayttajaId={68} muuId={ryhmantehtava.id}
+            />)}
 
         </Laatikko>
 
