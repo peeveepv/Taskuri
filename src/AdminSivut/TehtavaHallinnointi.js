@@ -5,7 +5,7 @@ import Laatikko from '../containers/Laatikko';
 import LaatikonSisalto from "../containers/LaatikonSisalto";
 import AdminLaatikonSisalto from '../containers/LaatikonSisalto';
 import {haePerheenValisemattomatTehtavat, lisaaTehtava, muokkaaTehtavaa, poistaTehtava, haePerheenKaikkiTehtavat} from "../tiedonhakusivut/Tehtavahaku";
-import ToggleNappi from '../containers/ToggleNappi'
+//import ToggleNappi from '../containers/ToggleNappi'
 import {StackNavigator,} from 'react-navigation';
 import { Actions } from 'react-native-router-flux';
 

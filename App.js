@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text, View, AsyncStorage } from 'react-native';
 import Paanavigaattori from './src/components/Paanavigaattori';
 import LoginForm from './src/components/LoginForm';
 
@@ -42,12 +43,13 @@ export default class App extends React.Component {
     render() {
       if (this.state.token)
         return (
-            <Paanavigaattori/>
+            <Paanavigaattori screenProps={this.state}>
+            </Paanavigaattori>
         )
         else if (this.state.readingStorage) {
           return(
           <View>
-          Moro
+          <Text>Moro</Text>
           </View>)
         } else
           return (
