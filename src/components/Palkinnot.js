@@ -53,11 +53,15 @@ export default class Palkinnot extends Component {
         <Header sivunOtsikko={'Palkinnot'}/>
         <Laatikko>
           {this.state.avoimetPalkinnot.map((palkinto) =>
-            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
+            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus}
+                             otsikko={palkinto.nimi} toiminnonNimi={'Lunasta'}
+                             toiminto={lunastaPalkinto}/>)}
         </Laatikko>
         <Laatikko>
           {this.state.lukitutPalkinnot.map((palkinto) =>
-            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus} otsikko={palkinto.nimi}/>)}
+            <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus}
+                             otsikko={palkinto.nimi} toiminnonNimi={'Lunasta'}
+                             toiminto={lunastaPalkinto}/>)}
         </Laatikko>
       </View>
     )
