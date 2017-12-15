@@ -61,7 +61,7 @@ export default class Palkinnot extends Component {
           {this.state.lukitutPalkinnot.map((palkinto) =>
             <LaatikonSisalto key={palkinto.id} lisatieto={palkinto.kuvaus}
                              otsikko={palkinto.nimi} toiminnonNimi={'Lunasta'}
-                             toiminto={lunastaPalkinto}/>)}
+                             toiminto={lunastaPalkinto} kayttajaId={68} muuId={palkinto.id}/>)}
         </Laatikko>
       </View>
     )
